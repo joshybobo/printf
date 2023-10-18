@@ -24,11 +24,11 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				print_allchars += printf_c(list_of_allargs);
+				print_allchars += printf_chars(list_of_allargs);
 			}
 			else if (*format == 's')
 			{
-				print_allchars += printf_s(list_of_allargs);
+				print_allchars += printf_strs(list_of_allargs);
 			}
 			else if (*format == '%')
 			{
