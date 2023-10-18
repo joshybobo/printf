@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			print_allchars += fputchar(*format);
+			print_allchars += putchar(*format);
 			format++;
 		}
 		else
@@ -41,10 +41,10 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			print_allchars += fputchar(*format);
+			print_allchars += putchar(*format);
 		}
 		format++;
 	}
 	va_end(list_of_allargs);
-	return (list_of_allargs);
+	return (0);
 }
