@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _printf - function that prints
- * @format: format to be printed
- * Return: void
+ * _printf - function to print
+ * @format: format to print
+ * Return:  the number of characters printed
  */
 
 int _printf(const char *format, ...)
@@ -13,38 +13,38 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
+
 	va_start(list_of_allargs, format);
+
 	while (*format)
 	{
 		if (*format != '%')
 		{
-			write(1, format, 1);
-			print_allchars++;
+			print_allchars += fputchar(*format);
+			format++;
 		}
 		else
 		{
 			format++;
-			if (*format == '\0')
-				break;
-			else if (*format == 's')
-			{
-				char *str = va_arg(list_of_allargs, char *);
-				int str_len = 0;
+		}
+		if (*format == 's')
+		{
+			char *str = va_arg(list_of_allargs, char *);
+			int str_len = 0;
 
-				while (str[str_len] != '\0')
-				{
-					str_len++;
-				}
-				write(1, str, str_len);
-				print_allchars += str_len;
-			}
-			else
+			while (str[str_len] != '\0')
 			{
-				print_allchars += putchar(*format);
+				str_len++;
 			}
+			write(1, str, str_len);
+			print_allchars++;
+		}
+		else
+		{
+			print_allchars += fputchar(*format);
 		}
 		format++;
 	}
 	va_end(list_of_allargs);
-	return (0);
+	return (list_of_allargs);
 }
