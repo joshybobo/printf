@@ -26,11 +26,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '%')
-			{
-				print_allchars += putchar('%');
-			}
-			else if (*format == 'c')
+			if (*format == 'c')
 			{
 				char c = va_arg(list_of_allargs, int);
 

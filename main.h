@@ -9,8 +9,9 @@
 #include <unistd.h>
 
 int _printf(const char *format, ...);
-int printf_chars(va_list args);
+int printf_c(va_list args);
 int printf_percent(void);
-int printf_strs(va_list args);
+int printf_s(va_list args);
+int printf_d(va_list args);
 
 #endif
